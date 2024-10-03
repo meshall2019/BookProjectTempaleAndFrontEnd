@@ -1,0 +1,48 @@
+/* .navbar-brand{
+    font-size: 40px !important;
+    font-weight: 400 !important;
+    font-family: 'Handlee', cursive !important;
+    color: #041562 !important;
+} */
+
+* {
+    padding:0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+.carousel .carousel-item {
+    height: 500px;
+  }
+
+  .dropdown-menu {
+    background-color: #062c30;
+  }
+  
+  .carousel-item img {
+      position: absolute;
+      object-fit:cover;
+      top: 0;
+      left: 0;
+      min-height: 500px;
+      background:rgba(224,74,73,0.60); 
+      opacity: 0.6;
+  }
+
+  .carousel-caption > h5{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #062C30;
+    font-weight: 800;
+  }
+
+  .productContainer {
+      margin-top: 100px;
+  }
+
+  .productContainer > h1 {
+      top: 0;
+      left: 0;
+  }

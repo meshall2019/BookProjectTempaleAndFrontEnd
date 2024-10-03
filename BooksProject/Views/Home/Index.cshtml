@@ -1,0 +1,147 @@
+﻿
+
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4" id="ListBooks">
+
+
+            <!--List Books Here.....-->
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+         
+
+            $.ajax({
+                url: "https://localhost:7231/Category/AllCategories",
+                method: "GET",
+                success: function (data) {
+
+                    for (item of data) {
+
+                        $("#categories")
+                          .append(`
+                                   <a class="dropdown-item" id="BookCategory">${item.name}</a>
+                             `);
+                    }
+                },//End of Category List In NavBar
+                error: function (Request, error) { }
+
+            });//End Of ajax
+
+
+            $.ajax({
+                url: "https://localhost:7231/api/Book/AllBooks",
+                method: "GET",
+                success: function (data) {
+
+                    $("#BookCategory").click(function () {
+
+                            for (item of data) {
+
+                                if ($("#BookCategory").html() == item.category.name) {
+
+
+                                    $("#ListBooks")
+                                        .append(`
+
+                                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+
+                                <a class="block relative h-48 rounded overflow-hidden">
+                                            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="${item.bookImage}">
+                                </a>
+                                <div class="mt-4">
+                                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">${item.category.name}</h3>
+                                    <h2 class="text-gray-900 title-font text-lg font-medium">${item.title}</h2>
+                                    <p class="mt-1">${item.price}</p>
+                                </div>
+
+                            </div>
+
+                                              `);//End of List Books By Category
+                              
+                            }
+                        }
+                    });
+
+        },//End of List Books By Category success
+                error: function (Request, error) { }
+
+            });//End Of ajax
+
+
+            $.ajax({
+                url: "https://localhost:7231/api/Book/AllBooks",
+                method: "GET",
+                // cache:false,
+                success: function (data) {
+
+                    $("#ListAllBooks").click(function (){
+                  
+                        for (item of data) {
+                                $("#ListBooks")
+                                    .append(`
+
+                                      <div class="lg:w-1/4 p-1 w-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden m-1  ">
+
+                                        <a class="block relative h-48 rounded overflow-hidden">
+                                                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="${item.bookImage}">
+                                        </a>
+                                        <div class="mt-4">
+                                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">${item.category.name}</h3>
+                                            <h2 class="text-gray-900 title-font text-lg font-medium" value="${item.id}" id="getBookById">${item.title}</h2>
+                                            <p class="mt-1">${item.price}</p>
+                                        </div>
+                                              
+                                        </div>
+
+                                                  `);//End of List All Books 
+                            }
+                     
+                        });//End of ListAllBooks
+
+                },//End of List All Books success
+                error: function (Request, error) { }
+
+            });//End Of ajax
+
+
+            $.ajax({
+                url: "https://localhost:7231/api/Book/GetBookById",
+                method: "GET",
+                data:{
+                    id:"15"
+                },
+                success: function (data) {
+
+                    // $("#getBookById").click(function () {
+
+                        console.log(data)
+                        alert(data.title)
+
+
+                    // });//End of ListAllBooks
+
+                },//End of List All Books success
+                error: function (Request, error) { console.log(data) }
+
+            });//End Of ajax
+
+
+        });//End Of Ready
+
+    </script>
+
+}

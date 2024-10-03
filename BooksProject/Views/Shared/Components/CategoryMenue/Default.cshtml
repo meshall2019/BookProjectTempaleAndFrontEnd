@@ -1,0 +1,61 @@
+﻿<a class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle mr-5 hover:text-gray-900" style=" font-size: 22px;font-family: 'Montserrat', sans-serif;
+    color: #062c30;"
+       data-toggle="dropdown"
+       href="#"
+       role="button"
+       data-bs-toggle="dropdown"
+       id="nav-dropdown"
+       aria-expanded="false">
+        Categories
+    </a>
+     <ul class="dropdown-menu menu" aria-labelledby="dropdownMenuLink" style="color:white;background-color:#062c30">
+
+           <li id="categories">
+            
+            </li>
+
+        <li><hr class="dropdown-divider"></li>
+        <li>
+       
+            <a asp-controller="Book" asp-action="List" asp-route-Category="" class="dropdown-item">All Books</a>
+        </li>
+    </ul> 
+</a> 
+
+@* 
+@section Scripts{
+
+
+<script>
+
+$(document).ready(function () {
+
+    $.ajax({
+        url: "https://localhost:7231/Category/AllCategories",
+        method: "GET",
+        success: function (data) {
+
+            for (item of data) {
+
+                $("#categories").append
+                (`
+                       < a class="dropdown-item" >
+                       ${item.name}
+                       </a>
+               `);
+
+            }
+        },
+        error: function (Request, error) { }
+
+           });//End Of ajax
+  
+});//End Of Ready
+
+ </script>
+
+
+
+}
+ *@
